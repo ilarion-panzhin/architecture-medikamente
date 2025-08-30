@@ -1,0 +1,44 @@
+@startuml
+' C4-PlantUML Context diagram
+' If rendering locally, ensure the include path is available
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+TITLE Medikamente Platform — C4: System Context
+
+' Personas
+Person(patient, "Patient", "Пациент")
+Person(receptionist, "Receptionist", "Ресепшен")
+Person(doctor, "Doctor", "Врач")
+Person(cashier, "Cashier", "Кассир")
+Person(bookkeeper, "Bookkeeper", "Бухгалтер")
+Person(warehouse, "Warehouse keeper", "Сотрудник склада")
+
+' Core system
+System(system, "Medikamente Platform", "Запись, оказание услуг, платежи, учет, аналитика")
+
+' External systems
+System_Ext(lab, "Laboratory System", "Медицинская лаборатория")
+System_Ext(kkm, "KKM", "Контрольно кассовая машина")
+System_Ext(onec_acc, "1C Бухгалтерия", "Учет и отчетность")
+System_Ext(onec_inv, "1C Торговля и склад", "Учет ТМЦ")
+System_Ext(bank, "Bank/Acquirer", "Эквайринг")
+System_Ext(tax, "Tax Authority", "Налоговая отчетность")
+
+' Relationships with the core system
+Rel(patient, system, "Запись на прием, просмотр своих данных")
+Rel(receptionist, system, "Регистрация клиента, расписание")
+Rel(doctor, system, "Осмотр, назначения, записи")
+Rel(cashier, system, "Проведение оплаты")
+Rel(bookkeeper, system, "Бухучет и отчетность")
+Rel(warehouse, system, "Учет и движение ТМЦ")
+
+' System to external systems
+Rel(system, lab, "Направления и результаты анализов", "HTTPS")
+Rel(system, kkm, "Проведение платежей", "TCP/TLS")
+Rel(system, onec_acc, "Проводки, отчеты", "API/Files")
+Rel(system, onec_inv, "Остатки, закупки", "API/Files")
+Rel(kkm, bank, "Эквайринг транзакций")
+Rel(onec_acc, tax, "Передача отчетности")
+
+SHOW_LEGEND()
+@enduml
