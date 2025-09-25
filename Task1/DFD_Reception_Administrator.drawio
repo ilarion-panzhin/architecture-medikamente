@@ -1,0 +1,89 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+  <diagram name="Page-1" id="6oi6fuF8ZNdv-zSBteOR">
+    <mxGraphModel dx="1235" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="OD8HHzGlEnBRrU0wnHHt-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="OD8HHzGlEnBRrU0wnHHt-1" target="OD8HHzGlEnBRrU0wnHHt-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OD8HHzGlEnBRrU0wnHHt-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="OD8HHzGlEnBRrU0wnHHt-1" target="OD8HHzGlEnBRrU0wnHHt-5" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OD8HHzGlEnBRrU0wnHHt-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="OD8HHzGlEnBRrU0wnHHt-1" target="OD8HHzGlEnBRrU0wnHHt-4" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OD8HHzGlEnBRrU0wnHHt-1" value="Pati&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;ent&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="30" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OD8HHzGlEnBRrU0wnHHt-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="OD8HHzGlEnBRrU0wnHHt-2" target="OD8HHzGlEnBRrU0wnHHt-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OD8HHzGlEnBRrU0wnHHt-2" value="Administrator" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="580" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OD8HHzGlEnBRrU0wnHHt-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="OD8HHzGlEnBRrU0wnHHt-3" target="OD8HHzGlEnBRrU0wnHHt-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="105" />
+              <mxPoint x="460" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OD8HHzGlEnBRrU0wnHHt-3" value="регистрация клиента" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="315" y="50" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="OD8HHzGlEnBRrU0wnHHt-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="OD8HHzGlEnBRrU0wnHHt-4" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OD8HHzGlEnBRrU0wnHHt-4" value="регистрация файла с данными пациента" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="315" y="195" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="OD8HHzGlEnBRrU0wnHHt-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="OD8HHzGlEnBRrU0wnHHt-5" target="OD8HHzGlEnBRrU0wnHHt-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="405" />
+              <mxPoint x="460" y="250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oJFanPlQQoTHCDUPRupc-4" value="[tag:personal_data]" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="OD8HHzGlEnBRrU0wnHHt-11">
+          <mxGeometry x="0.7757" y="-3" relative="1" as="geometry">
+            <mxPoint x="-35" y="-3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OD8HHzGlEnBRrU0wnHHt-5" value=" создание/изменение записи к врачу" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="315" y="350" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="OD8HHzGlEnBRrU0wnHHt-13" value="Patients&lt;div&gt;[Exel file]&lt;br&gt;(&lt;code style=&quot;background-color: initial;&quot; data-end=&quot;407&quot; data-start=&quot;385&quot;&gt;Encryption&lt;/code&gt;&lt;/div&gt;&lt;div&gt;&lt;code style=&quot;background-color: initial;&quot; data-end=&quot;407&quot; data-start=&quot;385&quot;&gt;AES-256&lt;/code&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;)&lt;/span&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.stored_data;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="75" width="140" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="OD8HHzGlEnBRrU0wnHHt-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="OD8HHzGlEnBRrU0wnHHt-2" target="OD8HHzGlEnBRrU0wnHHt-13" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OD8HHzGlEnBRrU0wnHHt-15" value="&lt;div&gt;Data File 1&lt;/div&gt;&lt;div&gt;[Any file]&lt;/div&gt;&lt;div&gt;файлы с данными пациентов&lt;br&gt;&lt;/div&gt;&lt;div&gt;(Protected by DataGrail)&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.stored_data;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="210" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="OD8HHzGlEnBRrU0wnHHt-17" value="&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Journal-Doctor-FIO 1&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;[Excel files]&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;журнал записей&lt;br&gt;&lt;/div&gt;&lt;div&gt;(&lt;span style=&quot;background-color: initial;&quot;&gt;Protected&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;by DataGrail)&lt;/span&gt;&lt;/div&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.stored_data;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="365" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="OD8HHzGlEnBRrU0wnHHt-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="OD8HHzGlEnBRrU0wnHHt-2" target="OD8HHzGlEnBRrU0wnHHt-17" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="oJFanPlQQoTHCDUPRupc-1" value="&lt;p style=&quot;white-space-collapse: preserve;&quot; dir=&quot;auto&quot;&gt;Ограничивает доступ на основе роли&lt;/p&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="720" y="195" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="oJFanPlQQoTHCDUPRupc-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="oJFanPlQQoTHCDUPRupc-2" target="oJFanPlQQoTHCDUPRupc-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="775" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oJFanPlQQoTHCDUPRupc-2" value="Keycloak / IAM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="715" y="430" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

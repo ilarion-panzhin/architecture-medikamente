@@ -1,0 +1,142 @@
+@startuml
+' C4-PlantUML Container diagram for To-Be
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+TITLE Medikamente Platform — C4: Container view To-Be
+
+' === Users ===
+Person(patient, "Пациент")
+Person(staff_reception, "Ресепшен")
+Person(staff_doctor, "Врач")
+Person(staff_cashier, "Кассир")
+Person(staff_bookkeeper, "Бухгалтер")
+Person(staff_warehouse, "Сотрудник склада")
+
+' === External systems ===
+System_Ext(lab, "Лаборатория", "Внешняя лабораторная система")
+System_Ext(kkm, "ККМ", "Контрольно кассовая машина")
+System_Ext(onec_acc, "1C Бухгалтерия", "Учет и отчетность")
+System_Ext(onec_inv, "1C Торговля и склад", "Учет ТМЦ")
+System_Ext(tax, "Налоговая", "Прием отчетности")
+
+' === Core system boundary ===
+System_Boundary(sys, "Medikamente Platform") {
+
+  Container(web, "Веб портал", "React", "Личный кабинет пациента и рабочее место персонала")
+  Container(mobile, "Мобильное приложение", "iOS Android", "Личный кабинет пациента")
+
+  Container(api, "API Gateway", "Kong Nginx Apim", "OAuth OIDC, rate limit, валидация схем, минимизация полей")
+
+  ' Security and governance layer
+  Container(iam, "IAM Keycloak", "Keycloak", "Аутентификация и авторизация RBAC и ABAC, MFA")
+  Container(pdp, "Policy Decision Point", "OPA", "Принятие политик доступа на основе тегов и атрибутов")
+  Container(catalog, "Data Catalog и Tagging", "DataGrail или Informatica", "Словари тегов, автообнаружение, публикация метаданных")
+  Container(consent, "Consent Service", "Java", "Управление согласиями и правами субъектов")
+  Container(token, "Tokenization Service", "Java", "Токенизация и псевдонимизация PII и PHI")
+  Container(audit, "Audit and Logging", "Kafka плюс объектное хранилище", "Неизменяемые журналы доступа и действий")
+  Container(dlp, "DLP", "Symantec DLP или McAfee DLP", "Сканирование почты и файлов на PII")
+  Container(kms, "KMS и Secrets", "Vault или облачный KMS", "Ключи, секреты, сертификаты TLS")
+  Container(eventbus, "Event Bus", "Kafka", "Асинхронные события между сервисами")
+
+  ' Service mesh boundary to indicate mTLS enforcement
+  Container_Boundary(mesh, "Service Mesh mTLS") {
+    ' Business services
+    Container(adminsvc, "AdministrationService", "Java Spring", "Запись, договоры, онбординг")
+    Container(doctorsvc, "DoctorService", "Java Spring", "Электронная медкарта, приемы, назначения, направления")
+    Container(patientsvc, "PatientService", "Java Spring", "Профиль, настройки, согласия")
+    Container(paymentsvc, "PaymentsService", "Java Spring", "Интеграция с ККМ, фиксация транзакций")
+    Container(accadapter, "AccountingAdapterService", "Java Spring", "Интеграция с 1C Бухгалтерия")
+    Container(invadapter, "InventoryAdapterService", "Java Spring", "Интеграция с 1C Торговля и склад")
+    Container(labsvc, "LabIntegrationService", "Java Spring", "Безопасное взаимодействие с лабораторией")
+    Container(notesvc, "NotificationsService", "Java Spring", "Почта и пуш уведомления с политиками DLP")
+
+    ' Databases per service
+    ContainerDb(admin_db, "Admin DB", "Postgres", "RLS, шифрование на диске, Backup и DR")
+    ContainerDb(doctor_db, "Doctor DB", "Postgres", "Шифрование полей PHI, Backup и DR")
+    ContainerDb(patient_db, "Patient DB", "Postgres", "RLS, хранение согласий, Backup и DR")
+    ContainerDb(payment_db, "Payments DB", "Postgres", "Шифрование, журналирование, Backup и DR")
+  }
+
+  ' Analytics layer
+  Container(ingest, "Ingestion", "Spark Flink", "Загрузка событий в озеро данных")
+  Container(lake, "Lakehouse", "Snowflake или ClickHouse", "Слои Bronze Silver Gold, RLS и представления")
+  Container(bi, "BI и ML", "Power BI или Jupyter", "Работа только с де идентифицированными наборами")
+}
+
+' === User to system ===
+Rel(patient, web, "Работа через браузер")
+Rel(patient, mobile, "Работа через приложение")
+Rel(staff_reception, web, "Рабочее место")
+Rel(staff_doctor, web, "Рабочее место")
+Rel(staff_cashier, web, "Рабочее место")
+Rel(staff_bookkeeper, web, "Рабочее место")
+Rel(staff_warehouse, web, "Рабочее место")
+
+' === Edge and IAM ===
+Rel(web, api, "HTTPS")
+Rel(mobile, api, "HTTPS")
+Rel(api, iam, "OAuth OIDC, проверка токена")
+Rel(api, pdp, "Запрос решения по политике", "Rego")
+
+' === Business flows through gateway ===
+Rel(api, adminsvc, "REST gRPC")
+Rel(api, doctorsvc, "REST gRPC")
+Rel(api, patientsvc, "REST gRPC")
+Rel(api, paymentsvc, "REST gRPC")
+Rel(api, notesvc, "REST gRPC")
+
+' === Databases relations ===
+Rel(adminsvc, admin_db, "CRUD", "JDBC")
+Rel(doctorsvc, doctor_db, "CRUD", "JDBC")
+Rel(patientsvc, patient_db, "CRUD", "JDBC")
+Rel(paymentsvc, payment_db, "CRUD", "JDBC")
+
+' === Tagging and catalog ===
+Rel(adminsvc, catalog, "Публикует метаданные и теги")
+Rel(doctorsvc, catalog, "Публикует теги PHI")
+Rel(patientsvc, catalog, "Публикует теги PII и согласия")
+Rel(paymentsvc, catalog, "Публикует теги финансовых данных")
+
+' === Consent and tokenization ===
+Rel(patientsvc, consent, "Проверка и запись согласий")
+Rel(doctorsvc, token, "Токенизация PII PHI")
+Rel(labsvc, token, "Токенизация ссылок на результаты")
+
+' === Audit and logging ===
+Rel(api, audit, "Запись событий доступа")
+Rel(adminsvc, audit, "Запись действий")
+Rel(doctorsvc, audit, "Запись действий")
+Rel(patientsvc, audit, "Запись действий")
+Rel(paymentsvc, audit, "Запись действий")
+
+' === KMS and secrets ===
+Rel(kms, doctor_db, "Ключи шифрования")
+Rel(kms, payment_db, "Ключи шифрования")
+Rel(kms, admin_db, "Ключи шифрования")
+Rel(kms, patient_db, "Ключи шифрования")
+
+' === Event bus and adapters ===
+Rel(adminsvc, eventbus, "Публикует события")
+Rel(doctorsvc, eventbus, "Публикует события")
+Rel(paymentsvc, eventbus, "Публикует события")
+Rel(eventbus, accadapter, "Доставляет события")
+Rel(eventbus, invadapter, "Доставляет события")
+
+' === External integrations ===
+Rel(labsvc, lab, "Направления и результаты", "HTTPS TLS 1.3")
+Rel(paymentsvc, kkm, "Платежи", "TCP TLS")
+Rel(accadapter, onec_acc, "Интеграция", "API Files")
+Rel(invadapter, onec_inv, "Интеграция", "API Files")
+Rel(onec_acc, tax, "Отчетность")
+
+' === Notifications and DLP ===
+Rel(notesvc, dlp, "Проверка содержимого")
+Rel(notesvc, patient, "Письма и пуш", "SMTP HTTPS")
+
+' === Analytics flow ===
+Rel(eventbus, ingest, "Поток событий")
+Rel(ingest, lake, "Загрузка в Bronze Silver Gold")
+Rel(lake, bi, "Чтение через представления и роли")
+
+SHOW_LEGEND()
+@enduml
